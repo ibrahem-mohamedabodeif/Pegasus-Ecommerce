@@ -4,7 +4,7 @@ import { Suspense, lazy, useState } from "react";
 import toast from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { Pagination } from "@mui/material";
+import { Pagination, useMediaQuery } from "@mui/material";
 import { addToCart } from "../pages/cart/cartSlice";
 import Loader from "../pages/loader/loader";
 import { getProductes } from "../data/productes";
@@ -19,7 +19,8 @@ export default function SaleCard({ style }) {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
+  const itemsPerPage = isSmallScreen ? 2 : 4;
 
   const onSaleProducts = data?.filter((product) => product.sale > 0);
 
@@ -68,7 +69,7 @@ export default function SaleCard({ style }) {
             <a key={product.id} className="group">
               <div
                 onClick={() => handleNavigate(product)}
-                className="max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+                className=" max-sm:h-44 max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
               >
                 <img
                   src={product.image}
@@ -78,15 +79,8 @@ export default function SaleCard({ style }) {
               </div>
               <div className="flex justify-between items-center">
                 <div>
-                  <h3 className="mt-4 text-lg text-gray-900 flex items-center gap-6">
+                  <h3 className="max-sm:text-base mt-4 text-lg text-gray-900 flex items-center gap-6">
                     {product.title}
-                    {product.newArrival === "true" ? (
-                      <span className=" text-red-700  text-center text-[16px] font-semibold">
-                        new
-                      </span>
-                    ) : (
-                      ""
-                    )}
                   </h3>
                   <h2 className="text-sm text-gray-700">
                     ( {product.subTitle} )

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { addToCart } from "../pages/cart/cartSlice";
 import Loader from "../pages/loader/loader";
 import { getProductes } from "../data/productes";
-import { Pagination } from "@mui/material";
+import { Pagination, useMediaQuery } from "@mui/material";
 const DetailedProduct = lazy(() =>
   import("../pages/productes/detailedProduct")
 );
@@ -19,7 +19,9 @@ export default function NewArrivalCard() {
   });
 
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const isSmallScreen = useMediaQuery("(max-width: 600px)");
+
+  const itemsPerPage = isSmallScreen ? 2 : 4;
 
   const dispatch = useDispatch();
 
@@ -65,17 +67,17 @@ export default function NewArrivalCard() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {currentProductes?.map((product) => (
             <a key={product.id} className="group">
               <div
                 onClick={() => handleNavigate(product)}
-                className=" max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+                className=" max-sm:h-44 max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
               >
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
+                  className="h-full w-full object-cover object-center group-hover:opacity-75 "
                 />
               </div>
               <div className="flex justify-between items-center">
@@ -83,9 +85,6 @@ export default function NewArrivalCard() {
                   <div>
                     <h3 className="mt-4 text-lg text-gray-900 flex gap-5">
                       {product.title}
-                      <span className=" text-red-700  text-center text-[16px] font-semibold">
-                        new
-                      </span>
                     </h3>
                     <h2 className="text-sm text-gray-700">
                       ( {product.subTitle} )

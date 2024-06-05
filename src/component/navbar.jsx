@@ -24,10 +24,10 @@ export default function NavBar() {
             <Link to="/productes" onClick={handleOpen}>
               <span className=" font-medium">Productes</span>
             </Link>
-            <Link to="/productes?sortBy=sale" onClick={handleOpen}>
+            <Link to="/productes?filter=sale" onClick={handleOpen}>
               <span className=" font-medium">Sale</span>
             </Link>
-            <Link to="/productes?sortBy=newArrivals" onClick={handleOpen}>
+            <Link to="/productes?filter=newArrivals" onClick={handleOpen}>
               <span className=" font-medium">New Arrival</span>
             </Link>
 

@@ -12,7 +12,7 @@ import { Pagination } from "@mui/material";
 
 const DetailedProduct = lazy(() => import("./detailedProduct"));
 
-export default function ProductesCard({ style }) {
+const ProductesCard = ({ style }) => {
   const { isLoading, data: productes } = useQuery({
     queryKey: ["productes"],
     queryFn: getProductes,
@@ -20,74 +20,77 @@ export default function ProductesCard({ style }) {
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-
   const [searchParams, setSearchParams] = useSearchParams();
-  const filtedValue = searchParams.get("category") || "All products";
+  const dispatch = useDispatch();
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [open, setOpen] = useState(false);
 
-  const filteredProduct = useMemo(() => {
+  const categoryValue = searchParams.get("category") || "All products";
+  const sortValue = searchParams.get("sort") || "disable";
+  const filterValue = searchParams.get("filter") || "disable";
+
+  const filteredProducts = useMemo(() => {
     if (!productes) return [];
-    switch (filtedValue) {
-      case "Hoodies":
-      case "Long Sleeve Shirt":
-      case "T-Shirt":
-        return productes.filter((product) => product.category === filtedValue);
-      case "All products":
-      default:
-        return productes;
+
+    let filtered = productes;
+
+    if (categoryValue !== "All products") {
+      filtered = productes.filter(
+        (product) => product.category === categoryValue
+      );
     }
-  }, [productes, filtedValue]);
 
-  const sortedValue = searchParams.get("sortBy") || "";
-  const [field] = sortedValue.split(":");
-
-  useEffect(() => {
-    if (field === "disable") {
-      setSearchParams((prevParams) => {
-        const newParams = new URLSearchParams(prevParams);
-        newParams.delete("sortBy");
-        return newParams;
+    if (sortValue !== "disable") {
+      const [field, order] = sortValue.split(":");
+      filtered = filtered.sort((a, b) => {
+        if (order === "desc") {
+          return b[field] - a[field];
+        } else {
+          return a[field] - b[field];
+        }
       });
     }
-  }, [field, setSearchParams]);
 
-  const sortedProductes = useMemo(() => {
-    if (!filteredProduct) return [];
-    switch (field) {
-      case "newArrivals":
-        return filteredProduct.filter((item) => item.newArrival === "true");
-      case "sale":
-        return filteredProduct.filter((item) => item.sale > 0);
-      case "priceh":
-        return [...filteredProduct].sort((a, b) => b.price - a.price);
-      case "pricel":
-        return [...filteredProduct].sort((a, b) => a.price - b.price);
-      default:
-        return filteredProduct;
+    if (filterValue !== "disable") {
+      if (filterValue === "newArrivals") {
+        filtered = filtered.filter((item) => item.newArrival === "true");
+      } else if (filterValue === "sale") {
+        filtered = filtered.filter((item) => item.sale > 0);
+      }
     }
-  }, [filteredProduct, field]);
+
+    return filtered;
+  }, [productes, categoryValue, sortValue, filterValue]);
 
   const currentProductes = useMemo(() => {
     const indexOfLastProduct = currentPage * itemsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
-    return sortedProductes.slice(indexOfFirstProduct, indexOfLastProduct);
-  }, [sortedProductes, currentPage, itemsPerPage]);
+    return filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  }, [filteredProducts, currentPage, itemsPerPage]);
+
+  useEffect(() => {
+    if (sortValue === "disable" || filterValue === "disable") {
+      setSearchParams((prevParams) => {
+        const newParams = new URLSearchParams(prevParams);
+        if (sortValue === "disable") newParams.delete("sort");
+        if (filterValue === "disable") newParams.delete("filter");
+        return newParams;
+      });
+    }
+  }, [sortValue, filterValue, setSearchParams]);
 
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
-
-  const dispatch = useDispatch();
-  const [selectedProduct, setSelectedProduct] = useState(null);
-  const [open, setOpen] = useState(false);
 
   const handleNavigate = (product) => {
     setOpen(true);
     setSelectedProduct(product);
   };
 
-  const cartItem = (product) => {
+  const addToCartHandler = (product) => {
     const price = product.sale > 0 ? product.sale : product.price;
-    return {
+    const item = {
       id: product.id,
       title: product.title,
       price,
@@ -96,6 +99,8 @@ export default function ProductesCard({ style }) {
       quantity: 1,
       totalPrice: price * 1,
     };
+    dispatch(addToCart(item));
+    toast.success("Product added to cart");
   };
 
   if (isLoading) return <div>...Loading</div>;
@@ -108,7 +113,7 @@ export default function ProductesCard({ style }) {
             <a key={product.id} className="group">
               <div
                 onClick={() => handleNavigate(product)}
-                className="max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
+                className="max-sm:h-44 max-h-72 h-64 aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
               >
                 <img
                   src={product.image}
@@ -121,11 +126,6 @@ export default function ProductesCard({ style }) {
                 <div>
                   <h3 className="mt-4 text-lg text-gray-900 flex items-center gap-6">
                     {product.title}
-                    {product.newArrival === "true" && (
-                      <span className="text-red-700 text-center text-[16px] font-semibold">
-                        new
-                      </span>
-                    )}
                   </h3>
                   <h2 className="text-sm text-gray-700">
                     ( {product.subTitle} )
@@ -147,12 +147,7 @@ export default function ProductesCard({ style }) {
                 </div>
 
                 <div className="text-xl mr-2">
-                  <button
-                    onClick={() => {
-                      dispatch(addToCart(cartItem(product)));
-                      toast.success("product add to cart");
-                    }}
-                  >
+                  <button onClick={() => addToCartHandler(product)}>
                     <FontAwesomeIcon icon={faCartShopping} />
                   </button>
                 </div>
@@ -162,7 +157,7 @@ export default function ProductesCard({ style }) {
         </div>
         <div className="mt-14 flex justify-center">
           <Pagination
-            count={Math.ceil(sortedProductes.length / itemsPerPage)}
+            count={Math.ceil(filteredProducts.length / itemsPerPage)}
             page={currentPage}
             onChange={handlePageChange}
             size="large"
@@ -180,4 +175,6 @@ export default function ProductesCard({ style }) {
       </Suspense>
     </div>
   );
-}
+};
+
+export default ProductesCard;
