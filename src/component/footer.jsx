@@ -59,7 +59,7 @@ export default function Footer() {
               </li>
               <li className="mb-6">
                 <Link
-                  to="/productes?sortBy=newArrivals"
+                  to="/productes?filter=newArrivals"
                   className=" text-gray-600 hover:text-gray-900"
                 >
                   New Arrival
@@ -67,7 +67,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/productes?sortBy=sale"
+                  to="/productes?filter=sale"
                   className=" text-gray-600 hover:text-gray-900"
                 >
                   On Sale

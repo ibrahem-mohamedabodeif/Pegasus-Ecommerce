@@ -5,7 +5,7 @@ export default function SaleSec() {
   return (
     <div className="bg-white border-t mb-20 max-sm:mb-5">
       <div className="mx-auto max-w-2xl px-4 pt-16 sm:px-6  lg:max-w-7xl lg:px-8">
-        <Link to="/productes?sortBy=sale">
+        <Link to="/productes?filter=sale">
           <h2 className="text-3xl text-center  font-bold  text-gray-900 capitalize tracking-wide mb-12">
             on Sale
           </h2>
