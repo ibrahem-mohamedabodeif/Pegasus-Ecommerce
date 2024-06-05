@@ -10,7 +10,7 @@ export default function SaleSec() {
             on Sale
           </h2>
         </Link>
-        <div className=" h-[330px] overflow-auto max-sm:h-[400px]">
+        <div className=" h-[450px] overflow-auto max-sm:h-[400px]">
           <SaleCard style="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 " />
         </div>
       </div>

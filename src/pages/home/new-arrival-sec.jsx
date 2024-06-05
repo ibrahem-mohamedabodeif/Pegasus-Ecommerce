@@ -11,7 +11,7 @@ export default function NewArrivalSec() {
             new arrival
           </h2>
         </Link>
-        <div className=" h-[330px] overflow-auto max-sm:h-[400px]">
+        <div className=" h-[450px] overflow-auto max-sm:h-[400px]">
           <NewArrivalCard />
         </div>
       </div>
