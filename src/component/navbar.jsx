@@ -47,7 +47,7 @@ export default function NavBar() {
         <Link to="/productes">
           <span>productes</span>
         </Link>
-        <Link to="/productes?sortBy=sale">
+        <Link to="/productes?filter=sale">
           <span>sale</span>
         </Link>
         <Link to="/contact-us">

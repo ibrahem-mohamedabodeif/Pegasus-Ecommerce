@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addOrder } from "../../data/orders";
 import Shipping from "./shipping";
 import { clearCart } from "./cartSlice";
+import toast from "react-hot-toast";
 
 export default function CheckOut() {
   const productes = useSelector((state) => state.cart);
@@ -29,8 +30,8 @@ export default function CheckOut() {
       dispatch(clearCart());
       reset();
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      toast.error("error in add order");
     },
   });
 
@@ -49,8 +50,6 @@ export default function CheckOut() {
     mutate(order);
   };
 
-  // if (!productes.length) return <div>add some to cart</div>;
-
   if (isSuccess)
     return (
       <>
@@ -58,7 +57,7 @@ export default function CheckOut() {
         <div className="flex flex-col gap-y-10  items-center my-36">
           <Shipping />
           <span className=" text-lg ">
-            Your Order is predered Now, Have a nice day
+            Your Order is prepared now and delivered soon, Have a nice day
           </span>
         </div>
         <Footer />
@@ -121,7 +120,7 @@ export default function CheckOut() {
                   <div>
                     <h3 className="text-3xl font-bold text-gray-300">02</h3>
                     <h3 className="text-xl font-bold text-gray-800 mt-1">
-                      Shopping Address
+                      Shipping Address
                     </h3>
                   </div>
 

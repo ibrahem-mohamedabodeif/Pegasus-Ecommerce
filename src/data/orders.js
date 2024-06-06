@@ -5,6 +5,7 @@ export async function addOrder(order) {
 
   if (error) {
     console.log("can not added");
+    throw new Error(error, "can't add order");
   }
 
   return data;

@@ -79,6 +79,10 @@ const ProductesCard = ({ style }) => {
     }
   }, [sortValue, filterValue, setSearchParams]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [sortValue, filterValue, categoryValue]);
+
   const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
