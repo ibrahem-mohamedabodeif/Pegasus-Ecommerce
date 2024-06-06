@@ -13,7 +13,12 @@ import { Pagination } from "@mui/material";
 const DetailedProduct = lazy(() => import("./detailedProduct"));
 
 const ProductesCard = ({ style }) => {
-  const { isLoading, data: productes } = useQuery({
+  const {
+    isLoading,
+    data: productes,
+    isPending,
+    isFetching,
+  } = useQuery({
     queryKey: ["productes"],
     queryFn: getProductes,
   });
@@ -107,7 +112,9 @@ const ProductesCard = ({ style }) => {
     toast.success("Product added to cart");
   };
 
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <Loader />;
+  if (isFetching) return <Loader />;
+  if (isPending) return <Loader />;
 
   return (
     <div className="bg-white">
