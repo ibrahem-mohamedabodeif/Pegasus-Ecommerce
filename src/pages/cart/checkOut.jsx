@@ -31,7 +31,7 @@ export default function CheckOut() {
       reset();
     },
     onError: () => {
-      toast.error("error in add order");
+      toast.error("can't add order");
     },
   });
 
@@ -56,7 +56,7 @@ export default function CheckOut() {
         <NavBar />
         <div className="flex flex-col gap-y-10  items-center my-36">
           <Shipping />
-          <span className=" text-lg ">
+          <span className=" text-lg text-center ">
             Your Order is prepared now and delivered soon, Have a nice day
           </span>
         </div>
