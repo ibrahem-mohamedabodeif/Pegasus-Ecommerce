@@ -7,10 +7,12 @@ import { addOrder } from "../../data/orders";
 import Shipping from "./shipping";
 import { clearCart } from "./cartSlice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckOut() {
   const productes = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const productsData = productes.map(({ id, title, quantity, totalPrice }) => ({
     id,
@@ -59,6 +61,12 @@ export default function CheckOut() {
           <span className=" text-lg text-center ">
             Your Order is prepared now and delivered soon, Have a nice day
           </span>
+          <button
+            onClick={() => navigate("/")}
+            className="border rounded-lg text-lg pl-6 pr-6 pt-2 pb-2 bg-slate-800 hover:bg-slate-700 text-white"
+          >
+            Back Home
+          </button>
         </div>
         <Footer />
       </>
@@ -92,7 +100,7 @@ export default function CheckOut() {
                         required
                         {...register("name")}
                         type="text"
-                        placeholder="You name"
+                        placeholder="You First and Last Name"
                         className="px-4 py-3 bg-white text-gray-800 w-full text-sm border-2 rounded-md focus:border-slate-900 outline-none"
                       />
 
@@ -100,14 +108,14 @@ export default function CheckOut() {
                         disabled={isPending}
                         required
                         {...register("email")}
-                        type="text"
+                        type="email"
                         placeholder="Email address"
                         className="px-4 py-3 bg-white text-gray-800 w-full text-sm border-2 rounded-md focus:border-slate-900 outline-none"
                       />
                       <input
                         disabled={isPending}
                         required
-                        {...register("phone")}
+                        {...register("phone", { maxLength: 11, minLength: 11 })}
                         type="number"
                         placeholder="Phone number"
                         className="px-4 py-3 bg-white text-gray-800 w-full text-sm border-2 rounded-md focus:border-slate-900 outline-none"
