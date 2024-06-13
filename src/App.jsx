@@ -9,8 +9,6 @@ import CheckOut from "./pages/cart/checkOut";
 import { Toaster } from "react-hot-toast";
 import { Suspense, lazy } from "react";
 import Loader from "./pages/loader/loader";
-import { useSelector } from "react-redux";
-import Error from "./pages/error";
 
 const Productes = lazy(() => import("./pages/productes/productes"));
 const DetailedProduct = lazy(() => import("./pages/productes/detailedProduct"));
@@ -18,7 +16,6 @@ const Home = lazy(() => import("./pages/home/home"));
 
 function App() {
   const queryClient = new QueryClient();
-  const cart = useSelector((state) => state.cart);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -32,10 +29,7 @@ function App() {
             </Route>
             <Route path="/cart" element={<Cart />} />
             <Route path="/contact-us" element={<ContactUs />} />
-            <Route
-              path="/check-out"
-              element={cart.length === 0 ? <Error /> : <CheckOut />}
-            />
+            <Route path="/check-out" element={<CheckOut />} />
           </Routes>
         </Suspense>
         <Toaster />

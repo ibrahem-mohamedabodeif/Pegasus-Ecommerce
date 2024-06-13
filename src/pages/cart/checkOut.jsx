@@ -8,6 +8,7 @@ import Shipping from "./shipping";
 import { clearCart } from "./cartSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Error from "../error";
 
 export default function CheckOut() {
   const productes = useSelector((state) => state.cart);
@@ -71,6 +72,8 @@ export default function CheckOut() {
         <Footer />
       </>
     );
+
+  if (productes.length === 0) return <Error />;
 
   return (
     <>
@@ -154,7 +157,6 @@ export default function CheckOut() {
 
                 <div className="flex flex-wrap justify-end gap-4 mt-12 mb-10">
                   <button
-                    disabled={isPending}
                     type="submit"
                     className="px-6 py-3 text-sm font-semibold tracking-wide bg-slate-800 text-white rounded-md hover:bg-slate-900"
                   >
