@@ -41,9 +41,7 @@ export default function NavBar() {
       <Link to="/">
         <div className="relative flex items-center space-x-2">
           <img src="/logo.png" className="w-10" alt="Logo" />
-          <span className="uppercase font-bold text-2xl max-sm:hidden">
-            Pegasus
-          </span>
+          <span className="uppercase font-bold text-2xl">Pegasus</span>
         </div>
       </Link>
       <div className=" capitalize text-lg flex gap-12 max-sm:hidden">
