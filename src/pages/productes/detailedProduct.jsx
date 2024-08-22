@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Dialog,
   DialogPanel,
@@ -6,26 +7,8 @@ import {
 } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../cart/cartSlice";
-import toast from "react-hot-toast";
 
 export default function DetailedProduct({ product, isOpen, onClose }) {
-  const cartItem = (product) => {
-    const quantity = 1;
-    const price = product.sale > 0 ? product.sale : product.price;
-    return {
-      id: product.id,
-      title: product.title,
-      price,
-      category: product.category,
-      image: product.image,
-      quantity,
-      totalPrice: quantity * price,
-    };
-  };
-  const dispatch = useDispatch();
-
   if (!product) return null;
 
   return (
@@ -59,8 +42,6 @@ export default function DetailedProduct({ product, isOpen, onClose }) {
                     className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-8 md:right-6 md:top-6 lg:right-8 lg:top-8"
                     onClick={onClose}
                   >
-                    <span className="sr-only">Close</span>
-
                     <FontAwesomeIcon
                       icon={faXmark}
                       className="h-6 w-6"
@@ -68,7 +49,7 @@ export default function DetailedProduct({ product, isOpen, onClose }) {
                     />
                   </button>
 
-                  <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
+                  <div className="grid w-full grid-cols-1 items-center gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
                     <div className="aspect-h-3 aspect-w-2 overflow-hidden rounded-lg bg-gray-100 sm:col-span-4 lg:col-span-5">
                       <img
                         src={product.image}
@@ -77,28 +58,22 @@ export default function DetailedProduct({ product, isOpen, onClose }) {
                       />
                     </div>
                     <div className="sm:col-span-8 lg:col-span-7">
-                      <h2 className="text-2xl font text-gray-900 sm:pr-12">
-                        {product.category}
+                      <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
+                        {product.title}
                       </h2>
-                      <p className=" mt-4 text-sm text-gray-500">
+                      <p className="mt-5 text-sm text-gray-500">
                         {product.subTitle}
                       </p>
+                      <h2 className="mt-5 text-2xl sm:pr-12">
+                        category : {product.category}
+                      </h2>
+
                       <p className=" mt-4 text-sm text-gray-500">
                         {product.description}
                       </p>
 
-                      <section
-                        aria-labelledby="information-heading"
-                        className="mt-5 lg:mt-20"
-                      >
-                        <h3 id="information-heading" className="sr-only">
-                          Product information
-                        </h3>
-
+                      <section className="mt-5 lg:mt-20">
                         <div className="flex justify-between">
-                          <h2 className="text-2xl font-bold text-gray-900 sm:pr-12">
-                            {product.title}
-                          </h2>
                           {product.sale > 0 ? (
                             <div className="flex gap-8">
                               <p className="text-2xl opacity-90 text-gray-900 line-through">
@@ -114,27 +89,6 @@ export default function DetailedProduct({ product, isOpen, onClose }) {
                             </p>
                           )}
                         </div>
-                      </section>
-
-                      <section
-                        aria-labelledby="options-heading"
-                        className="mt-10"
-                      >
-                        <h3 id="options-heading" className="sr-only">
-                          Product options
-                        </h3>
-
-                        <button
-                          onClick={() => {
-                            dispatch(addToCart(cartItem(product)));
-                            onClose();
-                            toast.success("product add to cart");
-                          }}
-                          type="submit"
-                          className="mt-6 flex w-full items-center justify-center rounded-md border border-transparent bg-slate-900 px-8 py-3 text-base font-medium text-white hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                        >
-                          Add to cart
-                        </button>
                       </section>
                     </div>
                   </div>

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Dialog, Disclosure, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -151,9 +152,9 @@ export default function Sort({ productes }) {
                                     handleFilterClick(option.value)
                                   }
                                 >
-                                  <label className="ml-3 min-w-0 flex-1 text-gray-500">
+                                  <button className="ml-3 min-w-0 flex-1 text-gray-500">
                                     {option.label}
-                                  </label>
+                                  </button>
                                 </div>
                               ))}
                             </div>
@@ -198,9 +199,9 @@ export default function Sort({ productes }) {
                                   className="flex items-center cursor-pointer"
                                   onClick={() => handleSortClick(option.value)}
                                 >
-                                  <label className="ml-3 min-w-0 flex-1 text-gray-500">
+                                  <button className="ml-3 min-w-0 flex-1 text-gray-500">
                                     {option.label}
-                                  </label>
+                                  </button>
                                 </div>
                               ))}
                             </div>
@@ -293,9 +294,9 @@ export default function Sort({ productes }) {
                               className="flex items-center cursor-pointer"
                               onClick={() => handleFilterClick(option.value)}
                             >
-                              <label className="ml-3 text-sm text-gray-600">
+                              <button className="ml-3 text-sm text-gray-600">
                                 {option.label}
-                              </label>
+                              </button>
                             </div>
                           ))}
                         </div>
@@ -340,9 +341,9 @@ export default function Sort({ productes }) {
                               className="flex items-center cursor-pointer"
                               onClick={() => handleSortClick(option.value)}
                             >
-                              <label className="ml-3 text-sm text-gray-600">
+                              <button className="ml-3 text-sm text-gray-600">
                                 {option.label}
-                              </label>
+                              </button>
                             </div>
                           ))}
                         </div>

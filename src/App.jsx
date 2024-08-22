@@ -9,9 +9,16 @@ import CheckOut from "./pages/cart/checkOut";
 import { Toaster } from "react-hot-toast";
 import { Suspense, lazy } from "react";
 import Loader from "./pages/loader/loader";
+import SignIn from "./pages/signin/signin";
+import SignUp from "./pages/signup/signup";
+import Account from "./pages/account/account";
+import Orders from "./pages/account/orders/orders";
+import WishList from "./pages/account/wishlist/wishList";
+import AccountLayout from "./pages/account/layout";
+import ProtectedRoutes from "./component/protectedRoutes";
+import ProductPage from "./pages/productes/productPage";
 
 const Productes = lazy(() => import("./pages/productes/productes"));
-const DetailedProduct = lazy(() => import("./pages/productes/detailedProduct"));
 const Home = lazy(() => import("./pages/home/home"));
 
 function App() {
@@ -24,12 +31,33 @@ function App() {
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/productes" element={<Productes />}>
-              <Route path=":productTitle" element={<DetailedProduct />} />
-            </Route>
+            <Route path="/productes" element={<Productes />} />
+            <Route path="/productes/:productId" element={<ProductPage />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/check-out" element={<CheckOut />} />
+            <Route
+              path="/account"
+              element={
+                <ProtectedRoutes>
+                  <AccountLayout />
+                </ProtectedRoutes>
+              }
+            >
+              <Route path="" element={<Account />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="wishlist" element={<WishList />} />
+            </Route>
+            <Route
+              path="/check-out"
+              element={
+                <ProtectedRoutes>
+                  <CheckOut />
+                </ProtectedRoutes>
+              }
+            />
+
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </Suspense>
         <Toaster />

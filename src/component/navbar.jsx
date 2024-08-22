@@ -4,6 +4,7 @@ import { Badge } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import AccountBar from "./accountBar";
 
 export default function NavBar() {
   const cartItems = useSelector((state) => state.cart);
@@ -54,12 +55,13 @@ export default function NavBar() {
           <span>Contact us</span>
         </Link>
       </div>
-      <div className=" space-x-5 text-xl">
+      <div className=" flex items-center space-x-5 text-2xl">
         <Badge badgeContent={cartItems.length} color="primary">
           <Link to="/cart">
             <FontAwesomeIcon icon={faCartShopping} />
           </Link>
         </Badge>
+        <AccountBar />
       </div>
     </div>
   );

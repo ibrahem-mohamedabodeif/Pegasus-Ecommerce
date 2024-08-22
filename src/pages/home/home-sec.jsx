@@ -26,7 +26,7 @@ export default function HomeSec() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className=" max-sm:h-96 h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
-                          src="/pablo-padilla-HbY4XIMKxus-unsplash.jpg"
+                          src="https://images.unsplash.com/photo-1512977141980-8cc662e38a0c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
@@ -42,14 +42,14 @@ export default function HomeSec() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="/woody-kelly-Q9JiM_k2ca4-unsplash.jpg"
+                          src="https://images.unsplash.com/photo-1618333262686-d0bdf1e9089f?q=80&w=1822&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg ">
                         <img
-                          src="/whereslugo-qq-YDhd3bbg-unsplash.jpg"
+                          src="https://images.unsplash.com/photo-1622567893612-a5345baa5c9a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />
@@ -65,7 +65,7 @@ export default function HomeSec() {
                     <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
-                          src="/timothy-rose-nBaf7c_wd80-unsplash.jpg"
+                          src="https://images.unsplash.com/photo-1512400930990-e0bc0bd809df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt=""
                           className="h-full w-full object-cover object-center"
                         />

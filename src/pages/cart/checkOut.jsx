@@ -9,18 +9,29 @@ import { clearCart } from "./cartSlice";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Error from "../error";
+import { useUser } from "../../component/context/authContext";
+import { useEffect } from "react";
 
 export default function CheckOut() {
   const productes = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const user = useUser();
   const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) navigate("/signin");
+  }, [navigate, user]);
 
-  const productsData = productes.map(({ id, title, quantity, totalPrice }) => ({
-    id,
-    title,
-    quantity,
-    totalPrice,
-  }));
+  const productsData = productes.map(
+    ({ id, title, quantity, totalPrice, image, size, color }) => ({
+      id,
+      title,
+      quantity,
+      totalPrice,
+      image,
+      size,
+      color,
+    })
+  );
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -40,10 +51,14 @@ export default function CheckOut() {
 
   const onSubmit = (data) => {
     const order = productsData.map((product) => ({
+      userId: user.id,
       productId: product.id,
       productName: product.title,
       productQuantity: product.quantity,
       productPrice: product.totalPrice,
+      productImage: product.image,
+      size: product.size,
+      color: product.color,
       name: data.name,
       email: data.email,
       phone: data.phone,
