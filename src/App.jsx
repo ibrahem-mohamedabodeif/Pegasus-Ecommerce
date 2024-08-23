@@ -1,25 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import Cart from "./pages/cart/cart";
-
-import ContactUs from "./component/contactUs";
-import CheckOut from "./pages/cart/checkOut";
 import { Toaster } from "react-hot-toast";
 import { Suspense, lazy } from "react";
 import Loader from "./pages/loader/loader";
-import SignIn from "./pages/signin/signin";
-import SignUp from "./pages/signup/signup";
-import Account from "./pages/account/account";
-import Orders from "./pages/account/orders/orders";
-import WishList from "./pages/account/wishlist/wishList";
 import AccountLayout from "./pages/account/layout";
 import ProtectedRoutes from "./component/protectedRoutes";
-import ProductPage from "./pages/productes/productPage";
 
 const Productes = lazy(() => import("./pages/productes/productes"));
 const Home = lazy(() => import("./pages/home/home"));
+const Cart = lazy(() => import("./pages/cart/cart"));
+const ContactUs = lazy(() => import("./component/contactUs"));
+const CheckOut = lazy(() => import("./pages/cart/checkOut"));
+const SignIn = lazy(() => import("./pages/signin/signin"));
+const SignUp = lazy(() => import("./pages/signup/signup"));
+const Account = lazy(() => import("./pages/account/account"));
+const Orders = lazy(() => import("./pages/account/orders/orders"));
+const WishList = lazy(() => import("./pages/account/wishlist/wishList"));
+const ProductPage = lazy(() => import("./pages/productes/productPage"));
 
 function App() {
   const queryClient = new QueryClient();

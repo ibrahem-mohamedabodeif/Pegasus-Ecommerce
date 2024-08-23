@@ -57,7 +57,7 @@ export default function ProducteItemdetailed({ product }) {
                 </div>
               </div>
               <div className="w-36 text-gray-800 flex flex-col items-center border p-2 rounded-lg shadow">
-                <span className="font-medium">Will delivered in</span>
+                <span className="font-medium">Will delivered</span>
                 <span className="mt-2 pt-2 font-medium border-t-2 w-full text-center">
                   {date}
                 </span>

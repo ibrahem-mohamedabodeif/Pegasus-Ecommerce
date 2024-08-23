@@ -58,7 +58,7 @@ export default function RelatedProductes({ product }) {
                 count={Math.ceil(relatedProductes.length / itemsPerPage)}
                 page={currentPage}
                 onChange={handlePageChange}
-                size="large"
+                size="medium"
               />
             </div>
           </>

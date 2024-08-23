@@ -3,6 +3,7 @@ import { getOrdersById } from "../../../data/productes";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../loader/loader";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Orders() {
   const user = useUser();
@@ -12,7 +13,9 @@ export default function Orders() {
     queryFn: () => getOrdersById(user?.id),
   });
 
-  if (!user) if (!user) navigate("/signin");
+  useEffect(() => {
+    if (!user) navigate("/signin");
+  }, [user, navigate]);
 
   if (isLoading) <Loader />;
 
@@ -26,27 +29,31 @@ export default function Orders() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">Your Orders</h1>
-      <div className="py-10 grid grid-cols-2 gap-y-10">
+      <h1 className="text-2xl font-semibold uppercase">orders</h1>
+      <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {orders.map((order) => (
           <div
             key={order.productId}
-            className="flex max-w-md bg-white shadow rounded-lg overflow-hidden"
+            className="flex flex-col bg-white shadow rounded-lg overflow-hidden"
           >
-            <div className="w-1/3 bg-cover">
-              <img src={order.productImage} alt={order.productName} />
+            <div className="h-48 bg-cover flex-shrink-0">
+              <img
+                src={order.productImage}
+                alt={order.productName}
+                className="w-full h-full object-contain"
+              />
             </div>
-            <div className="w-2/3 p-4">
-              <h1 className="text-gray-900 font-bold text-2xl">
+            <div className="p-4 flex flex-col justify-between flex-grow">
+              <h1 className="text-gray-900 font-bold text-2xl text-center">
                 {order.productName}
               </h1>
               <p className="mt-2 text-gray-600 text-sm">to: {order.name}</p>
               <p className="mt-2 text-gray-600 text-sm">
                 address : {order.address}
               </p>
-              <div className="flex item-center justify-between mt-3">
+              <div className="flex justify-between items-center mt-3">
                 <h1 className="text-gray-700 font-semibold text-lg">
-                  ${order.productPrice} / {order.productQuantity} piecies
+                  ${order.productPrice} / {order.productQuantity} pieces
                 </h1>
                 <span
                   className={`px-3 py-2 text-white rounded ${

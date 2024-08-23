@@ -23,7 +23,7 @@ export default function ProductPage() {
   return (
     <>
       <NavBar />
-      <div className="pt-20 pl-14 text-xl font-semibold">
+      <div className="pt-20 pl-5 text-xl font-semibold">
         <Link to={"/productes"}>Productes</Link>
         <span className="text-gray-600"> / {product.title}</span>
       </div>
