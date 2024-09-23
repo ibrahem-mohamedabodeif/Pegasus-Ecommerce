@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+.section {
+  min-height: 400px;
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

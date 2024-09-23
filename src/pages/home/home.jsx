@@ -11,9 +11,15 @@ export default function Home() {
     <>
       <NavBar />
       <Suspense fallback={<Loader />}>
-        <HomeSec />
-        <NewArrivalSec />
-        <SaleSec />
+        <div className="section">
+          <HomeSec />
+        </div>
+        <div className="section">
+          <NewArrivalSec />
+        </div>
+        <div className="section">
+          <SaleSec />
+        </div>
       </Suspense>
       <Footer />
     </>
