@@ -12,6 +12,7 @@ export default function AccountBar() {
       <button
         onClick={() => setOpen(!open)}
         className="flex items-center"
+        aria-label="account"
         name="account"
       >
         {user ? (

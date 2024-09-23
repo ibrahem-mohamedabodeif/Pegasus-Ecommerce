@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import { Dialog, Disclosure, Transition } from "@headlessui/react";
+import { lazy, useState } from "react";
+const { Dialog, Disclosure, Transition } = lazy(() =>
+  import("@headlessui/react")
+);
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { FunnelIcon, MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { useSearchParams } from "react-router-dom";

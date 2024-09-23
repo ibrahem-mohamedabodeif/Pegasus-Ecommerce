@@ -28,6 +28,7 @@ export default function SaveButton({ product }) {
       onClick={() => handleAddToWishList(product)}
       className="hover:text-red-400"
       name="save-btn"
+      aria-label="save-btn"
     >
       <FontAwesomeIcon icon={faHeart} size="xl" />
     </button>

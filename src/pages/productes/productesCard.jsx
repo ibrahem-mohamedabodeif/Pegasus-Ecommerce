@@ -4,7 +4,7 @@ import { getProductes } from "../../data/productes";
 import { useSearchParams } from "react-router-dom";
 import { Suspense, lazy, useState, useMemo, useEffect } from "react";
 import Loader from "../loader/loader";
-import { Pagination } from "@mui/material";
+const { Pagination } = lazy(() => import("@mui/material"));
 import ProductItem from "../../component/productItem";
 
 const DetailedProduct = lazy(() => import("./detailedProduct"));

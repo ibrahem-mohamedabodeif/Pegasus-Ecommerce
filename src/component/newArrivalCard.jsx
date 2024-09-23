@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Suspense, lazy, useState } from "react";
 import Loader from "../pages/loader/loader";
 import { getProductes } from "../data/productes";
-import { Pagination, useMediaQuery } from "@mui/material";
+const { Pagination, useMediaQuery } = lazy(() => import("@mui/material"));
 
 import ProductItem from "./productItem";
 const DetailedProduct = lazy(() =>
@@ -17,8 +17,11 @@ export default function NewArrivalCard() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const isSmallScreen = useMediaQuery("(max-width: 600px)");
+  const isMediumScreen = useMediaQuery(
+    "(min-width: 600px) and (max-width: 960px)"
+  );
 
-  const itemsPerPage = isSmallScreen ? 2 : 4;
+  const itemsPerPage = isSmallScreen || isMediumScreen ? 2 : 4;
 
   const [selectedProduct, setSelectedProduct] = useState(null);
 

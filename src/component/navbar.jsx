@@ -43,8 +43,9 @@ export default function NavBar() {
           <img
             src="/logo.png"
             className="w-10 max-sm:w-14"
+            alt="logo-company"
             width={40}
-            alt="Logo"
+            height={40}
           />
           <span className="uppercase font-bold text-2xl max-sm:hidden">
             Pegasus
