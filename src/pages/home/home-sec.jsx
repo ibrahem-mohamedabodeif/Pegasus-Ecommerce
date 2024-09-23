@@ -28,6 +28,7 @@ export default function HomeSec() {
                         <img
                           src="https://images.unsplash.com/photo-1512977141980-8cc662e38a0c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -37,6 +38,7 @@ export default function HomeSec() {
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -48,6 +50,7 @@ export default function HomeSec() {
                         <img
                           src="https://images.unsplash.com/photo-1618333262686-d0bdf1e9089f?q=80&w=1822&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -57,6 +60,7 @@ export default function HomeSec() {
                         <img
                           src="https://images.unsplash.com/photo-1622567893612-a5345baa5c9a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -66,6 +70,7 @@ export default function HomeSec() {
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -77,6 +82,7 @@ export default function HomeSec() {
                         <img
                           src="https://images.unsplash.com/photo-1512400930990-e0bc0bd809df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"
@@ -86,6 +92,7 @@ export default function HomeSec() {
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
                           alt="image"
+                          loading="lazy"
                           width={176}
                           height={256}
                           className="h-full w-full object-cover object-center"

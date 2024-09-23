@@ -54,6 +54,7 @@ export default function DetailedProduct({ product, isOpen, onClose }) {
                       <img
                         src={product.image}
                         alt={product.title}
+                        loading="lazy"
                         className="object-cover object-center"
                       />
                     </div>

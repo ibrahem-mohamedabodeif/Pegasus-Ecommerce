@@ -15,6 +15,7 @@ export default function ProductItem({ product, setOpen, setSelectedProduct }) {
         <img
           src={product.image}
           alt={product.title}
+          loading="lazy"
           className="h-full w-full object-cover object-center"
         />
       </div>
