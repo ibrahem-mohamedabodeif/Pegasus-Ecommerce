@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Suspense, lazy, useState } from "react";
 import Loader from "../pages/loader/loader";
 import { getProductes } from "../data/productes";
-const { Pagination, useMediaQuery } = lazy(() => import("@mui/material"));
+import { Pagination, useMediaQuery } from "@mui/material";
 
 import ProductItem from "./productItem";
 const DetailedProduct = lazy(() =>

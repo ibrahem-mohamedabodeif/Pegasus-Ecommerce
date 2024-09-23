@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useQuery } from "@tanstack/react-query";
 import { Suspense, lazy, useState } from "react";
-const { Pagination, useMediaQuery } = lazy(() => import("@mui/material"));
+import { Pagination, useMediaQuery } from "@mui/material";
 import Loader from "../pages/loader/loader";
 import { getProductes } from "../data/productes";
 import ProductItem from "./productItem";
