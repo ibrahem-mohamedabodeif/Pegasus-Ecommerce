@@ -1,8 +1,9 @@
-import HomeSec from "./home-sec";
 import NavBar from "../../component/navbar";
-import NewArrivalSec from "./new-arrival-sec";
-import SaleSec from "./sale-sec";
 import Footer from "../../component/footer";
+import { lazy } from "react";
+const HomeSec = lazy(() => import("./home-sec"));
+const NewArrivalSec = lazy(() => import("./new-arrival-sec"));
+const SaleSec = lazy(() => import("./sale-sec"));
 
 export default function Home() {
   return (

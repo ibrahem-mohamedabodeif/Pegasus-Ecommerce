@@ -29,7 +29,10 @@ export default function CartBtn({ product, size, color }) {
   };
   return (
     <div className="text-xl mr-2 hover:text-blue-500">
-      <button onClick={() => addToCartHandler(product, size, color)}>
+      <button
+        onClick={() => addToCartHandler(product, size, color)}
+        name="cart"
+      >
         <FontAwesomeIcon icon={faCartShopping} />
       </button>
     </div>

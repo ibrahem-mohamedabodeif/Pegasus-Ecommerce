@@ -38,10 +38,17 @@ export default function NavBar() {
           </div>
         )}
       </div>
-      <Link to="/">
+      <Link to="/" aria-label="home">
         <div className="relative flex items-center space-x-2">
-          <img src="/logo.png" className="w-10" alt="Logo" />
-          <span className="uppercase font-bold text-2xl">Pegasus</span>
+          <img
+            src="/logo.png"
+            className="w-10 max-sm:w-14"
+            width={40}
+            alt="Logo"
+          />
+          <span className="uppercase font-bold text-2xl max-sm:hidden">
+            Pegasus
+          </span>
         </div>
       </Link>
       <div className=" capitalize text-lg flex gap-12 max-sm:hidden">
@@ -57,7 +64,7 @@ export default function NavBar() {
       </div>
       <div className=" flex items-center space-x-5 text-2xl">
         <Badge badgeContent={cartItems.length} color="primary">
-          <Link to="/cart">
+          <Link to="/cart" aria-label="cart-page">
             <FontAwesomeIcon icon={faCartShopping} />
           </Link>
         </Badge>

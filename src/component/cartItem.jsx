@@ -44,6 +44,7 @@ export default function CartItem({ item }) {
               <button
                 onClick={() => dispatch(decreaseQuantity(item.id))}
                 className="max-sm:w-14 max-sm:h-10 group rounded-l-xl px-5 py-[18px] border border-gray-200 flex items-center justify-center shadow-sm shadow-transparent transition-all duration-500 hover:bg-gray-50 hover:border-gray-300 hover:shadow-gray-300 focus-within:outline-gray-300"
+                name="decrease-btn"
               >
                 <svg
                   className="stroke-gray-900 transition-all duration-500 group-hover:stroke-slate-800"
@@ -81,6 +82,7 @@ export default function CartItem({ item }) {
               <button
                 onClick={() => dispatch(increaseQuantity(item.id))}
                 className="max-sm:w-14 max-sm:h-10 group rounded-r-xl px-5 py-[18px] border border-gray-200 flex items-center justify-center shadow-sm shadow-transparent transition-all duration-500 hover:bg-gray-50 hover:border-gray-300 hover:shadow-gray-300 focus-within:outline-gray-300"
+                name="increase-btn"
               >
                 <svg
                   className="stroke-gray-900 transition-all duration-500 group-hover:stroke-slate-800"

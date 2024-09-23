@@ -9,7 +9,11 @@ export default function AccountBar() {
   const user = useUser();
   return (
     <div className="relative">
-      <button onClick={() => setOpen(!open)} className="flex items-center">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center"
+        name="account"
+      >
         {user ? (
           <span className="w-10 p-2 font-bold text-sm capitalize border rounded-full bg-black text-white">
             {user?.user_metadata?.name[0]}

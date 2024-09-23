@@ -11,6 +11,7 @@ export default function InfoBtn({ product, setOpen, setSelectedProduct }) {
     <button
       onClick={() => handleNavigate(product)}
       className="absolute left-2 top-1 text-slate-700 hover:text-white"
+      name="info-btn"
     >
       <FontAwesomeIcon icon={faCircleInfo} size="lg" />
     </button>

@@ -15,7 +15,9 @@ export default function MegaMenu() {
       </Link>
       <Link to={"/account"}>Account</Link>
       {user ? (
-        <button onClick={() => signOut()}>Logout</button>
+        <button onClick={() => signOut()} name="logout">
+          Logout
+        </button>
       ) : (
         <Link to={"/signin"}>Sign In</Link>
       )}

@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 export default function HomeSec() {
   return (
     <div className="relative overflow-hidden bg-white mt-2 mb-10 ">
-      <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+      <div className="pb-80 pt-16 sm:pb-40 max-sm:pt-10 lg:pb-48 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900 max-sm:text-4xl">
               Descover our collection with your own style
             </h1>
             <p className="mt-4 text-xl text-gray-500">
@@ -27,14 +27,18 @@ export default function HomeSec() {
                       <div className=" max-sm:h-96 h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                         <img
                           src="https://images.unsplash.com/photo-1512977141980-8cc662e38a0c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -43,21 +47,27 @@ export default function HomeSec() {
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src="https://images.unsplash.com/photo-1618333262686-d0bdf1e9089f?q=80&w=1822&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg ">
                         <img
                           src="https://images.unsplash.com/photo-1622567893612-a5345baa5c9a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -66,14 +76,18 @@ export default function HomeSec() {
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src="https://images.unsplash.com/photo-1512400930990-e0bc0bd809df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
                         <img
                           src="https://tailwindui.com/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
-                          alt=""
+                          alt="image"
+                          width={176}
+                          height={256}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>

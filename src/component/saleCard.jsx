@@ -42,14 +42,16 @@ export default function SaleCard({ style }) {
     <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4  sm:px-6  lg:max-w-7xl lg:px-8">
         <div className={style}>
-          {currentProductes?.map((product) => (
-            <ProductItem
-              key={product.id}
-              product={product}
-              setOpen={setOpen}
-              setSelectedProduct={setSelectedProduct}
-            />
-          ))}
+          <Suspense fallback={<Loader />}>
+            {currentProductes?.map((product) => (
+              <ProductItem
+                key={product.id}
+                product={product}
+                setOpen={setOpen}
+                setSelectedProduct={setSelectedProduct}
+              />
+            ))}
+          </Suspense>
         </div>
         <div className="mt-10 flex justify-center">
           <Pagination

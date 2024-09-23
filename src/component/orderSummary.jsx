@@ -49,6 +49,7 @@ export default function OrderSummary({ cartItems }) {
           <button
             onClick={() => handleCheckOut()}
             className="w-full text-center bg-slate-800 rounded-xl py-3 px-6 font-semibold text-lg text-white transition-all duration-500 hover:bg-slate-900"
+            name="cheched-btn"
           >
             Checkout
           </button>

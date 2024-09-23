@@ -1,6 +1,7 @@
 import logo from "../../../public/logo.png";
 import { Suspense } from "react";
 import SignupForm from "./signupForm";
+import Loader from "../loader/loader";
 
 export default function SignUp() {
   return (
@@ -13,7 +14,7 @@ export default function SignUp() {
       </div>
 
       <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-        <Suspense fallback={<div>Loading form...</div>}>
+        <Suspense fallback={<Loader />}>
           <SignupForm />
         </Suspense>
       </div>

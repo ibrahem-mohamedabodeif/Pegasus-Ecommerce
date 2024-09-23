@@ -27,6 +27,7 @@ export default function SaveButton({ product }) {
     <button
       onClick={() => handleAddToWishList(product)}
       className="hover:text-red-400"
+      name="save-btn"
     >
       <FontAwesomeIcon icon={faHeart} size="xl" />
     </button>
