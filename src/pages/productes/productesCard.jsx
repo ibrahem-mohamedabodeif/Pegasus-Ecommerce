@@ -84,7 +84,7 @@ const ProductesCard = ({ style }) => {
     setCurrentPage(1);
   }, [sortValue, filterValue, categoryValue]);
 
-  const handlePageChange = (value) => {
+  const handlePageChange = (event, value) => {
     setCurrentPage(value);
   };
 
