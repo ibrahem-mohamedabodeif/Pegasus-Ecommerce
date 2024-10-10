@@ -6,21 +6,40 @@ export async function signUp(formData) {
   const name = formData.get("fullName");
   const phone = formData.get("phoneNumber");
 
-  let { data, error } = await supabase.auth.signUp({
-    email: email,
-    password: password,
+  const { data, error: signUpError } = await supabase.auth.signUp({
+    email,
+    password,
     options: {
       data: {
-        name: name,
-        phone: phone,
+        name,
+        phone,
       },
     },
   });
-  if (error) {
-    return error.message;
+
+  if (signUpError) {
+    return signUpError.message;
   }
+
+  if (data?.user) {
+    const { id, email, user_metadata } = data.user;
+    const { error: insertError } = await supabase.from("users").insert([
+      {
+        id,
+        email,
+        name: user_metadata.name,
+        phone: user_metadata.phone,
+      },
+    ]);
+
+    if (insertError) {
+      return insertError.message;
+    }
+  }
+
   return data;
 }
+
 export async function signIn(formData) {
   const email = formData.get("email");
   const password = formData.get("password");

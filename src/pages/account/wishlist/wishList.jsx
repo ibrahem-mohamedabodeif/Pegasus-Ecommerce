@@ -50,36 +50,38 @@ export default function WishList() {
   return (
     <div>
       <h1 className="text-2xl font-semibold">Wish List</h1>
-      <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {wishProductes.map((product) => (
           <div
             key={product.productId}
-            className="relative flex flex-col items-center bg-white shadow rounded-lg overflow-hidden"
+            className="w-60 relative flex flex-col  items-center bg-white shadow rounded-lg overflow-hidden"
           >
             <Suspense fallback={<Loader />}>
-              <div className="h-48 bg-cover flex-shrink-0">
+              <div className="h-32 bg-cover flex-shrink-0">
                 <img
                   src={product.productImage}
                   alt={product.productName}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="p-4 flex flex-col justify-between flex-grow">
+              <div className="pt-2 flex flex-col justify-between flex-grow">
                 <Link
                   to={`/productes/${product.productId}`}
-                  className="text-gray-900 font-bold text-2xl"
+                  className="text-gray-900 font-bold text-lg"
                 >
                   {product.productName}
                 </Link>
-                <p className="mt-2 text-gray-600 ">{product.productSubtitle}</p>
+                <p className="pt-1 text-gray-600 text-center">
+                  {product.productSubtitle}
+                </p>
 
-                <div className="flex justify-between items-center mt-3">
+                <div className="flex justify-between items-center pb-4 pt-2">
                   <h1 className="text-gray-700 font-semibold text-xl">
                     ${product.productPrice} / piece
                   </h1>
                   <button
                     onClick={() => handleDelete(product.productId)}
-                    className="absolute right-0 top-0 px-3 py-2 bg-red-300 hover:bg-red-600 text-white rounded"
+                    className="absolute right-0 top-0 px-2 py-1 bg-red-400 hover:bg-red-600 text-white rounded"
                   >
                     <FontAwesomeIcon icon={faTrash} />
                   </button>

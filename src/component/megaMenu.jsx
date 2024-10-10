@@ -5,7 +5,7 @@ import { signOut } from "../data/productes";
 export default function MegaMenu() {
   const user = useUser();
   return (
-    <div className="text-xl absolute right-0 flex flex-col items-start gap-4 border p-4 rounded-lg  bg-white shadow-xl z-20">
+    <div className="text-lg absolute right-0 flex flex-col items-start gap-2 border p-4 rounded-lg  bg-white shadow-xl z-20">
       <Link to={"/account/orders"}>Orders</Link>
       <Link
         to={"/account/wishlist"}

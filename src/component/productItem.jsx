@@ -23,22 +23,22 @@ export default function ProductItem({ product, setOpen, setSelectedProduct }) {
       <div className="flex justify-between items-baseline">
         <div>
           <Link to={`/productes/${product.id}`}>
-            <h3 className="mt-4 text-lg text-gray-900 flex items-center gap-6">
+            <h3 className="mt-4 text-lg font-bold text-gray-900 flex items-center gap-6">
               {product.title}
             </h3>
           </Link>
           <h2 className="text-sm text-gray-700">( {product.subTitle} )</h2>
           {product.sale > 0 ? (
-            <div className="flex gap-6">
+            <div className="flex items-center gap-3">
+              <p className="mt-1 text-xl font-medium text-gray-900">
+                ${product.sale}
+              </p>
               <p className="mt-1 text-lg font-medium text-gray-900 opacity-60 line-through">
                 ${product.price}
               </p>
-              <p className="mt-1 text-lg font-medium text-gray-900">
-                ${product.sale}
-              </p>
             </div>
           ) : (
-            <p className="mt-1 text-lg font-medium text-gray-900">
+            <p className="mt-1 text-xl font-medium text-gray-900">
               ${product.price}
             </p>
           )}

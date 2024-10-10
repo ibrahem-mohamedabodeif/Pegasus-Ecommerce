@@ -16,7 +16,7 @@ export default function ProductPage() {
     isPending,
     isFetching,
   } = useQuery({
-    queryKey: ["product"],
+    queryKey: ["product", productId],
     queryFn: () => getProductById(productId),
   });
 

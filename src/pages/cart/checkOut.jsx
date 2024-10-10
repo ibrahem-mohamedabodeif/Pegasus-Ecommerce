@@ -44,8 +44,9 @@ export default function CheckOut() {
       dispatch(clearCart());
       reset();
     },
-    onError: () => {
+    onError: (error) => {
       toast.error("can't add order");
+      console.log(error.message);
     },
   });
 
