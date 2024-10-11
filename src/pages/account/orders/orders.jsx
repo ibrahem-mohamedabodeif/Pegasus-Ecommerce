@@ -147,7 +147,7 @@ export default function Orders() {
           </div>
           <div className="text-center my-10">
             <div className="flex gap-2 items-center justify-center">
-              <img src="/public/pegasus.png" className="w-12" />
+              <img src="/pegasus.png" className="w-12" />
               <h1 className="text-2xl font-bold tracking-widest">PEGASUS</h1>
             </div>
             <span className="text-neutral-700 capitalize text-sm">
